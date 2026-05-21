@@ -165,6 +165,92 @@ setTimeout(() => {
     document.body.style.transition = 'opacity 0.5s ease';
 }, 100);
 
+// ==================== CLOUD SECTION INTERACTIONS ==================== //
+const cloudProvider = document.getElementById('cloudProvider');
+const cloudService = document.getElementById('cloudService');
+const cloudFeatureTitle = document.getElementById('cloudFeatureTitle');
+const cloudFeatureDescription = document.getElementById('cloudFeatureDescription');
+const instanceCount = document.getElementById('instanceCount');
+const storageSize = document.getElementById('storageSize');
+const bandwidth = document.getElementById('bandwidth');
+const instanceValue = document.getElementById('instanceValue');
+const storageValue = document.getElementById('storageValue');
+const bandwidthValue = document.getElementById('bandwidthValue');
+const estimatedCost = document.getElementById('estimatedCost');
+const deployButton = document.getElementById('deployButton');
+const deployMessage = document.getElementById('deployMessage');
+
+const cloudPricing = {
+    aws: { compute: 30, storage: 0.09, bandwidth: 10, name: 'AWS' },
+    azure: { compute: 28, storage: 0.085, bandwidth: 9, name: 'Azure' },
+    gcp: { compute: 26, storage: 0.08, bandwidth: 8, name: 'GCP' }
+};
+
+const serviceDescriptions = {
+    compute: 'Tạo và quản lý máy chủ ảo, triển khai ứng dụng với khả năng mở rộng động và cân bằng tải tự động.',
+    storage: 'Lưu trữ dữ liệu an toàn trên cloud với khả năng mở rộng và sao lưu đa vùng.',
+    database: 'Triển khai cơ sở dữ liệu cloud quản lý, tối ưu hiệu suất và truy vấn nhanh cho ứng dụng.'
+};
+
+function updateCloudDetails() {
+    const provider = cloudProvider.value;
+    const service = cloudService.value;
+    const providerName = cloudPricing[provider].name;
+
+    cloudFeatureTitle.innerText = `${providerName} ${service.charAt(0).toUpperCase() + service.slice(1)}`;
+    cloudFeatureDescription.innerText = serviceDescriptions[service];
+}
+
+function updateEstimator() {
+    const provider = cloudProvider.value;
+    const pricing = cloudPricing[provider];
+    const instances = Number(instanceCount.value);
+    const storage = Number(storageSize.value);
+    const bw = Number(bandwidth.value);
+
+    instanceValue.innerText = instances;
+    storageValue.innerText = `${storage} GB`;
+    bandwidthValue.innerText = `${bw} TB`;
+
+    const totalCost = instances * pricing.compute + storage * pricing.storage + bw * pricing.bandwidth;
+    estimatedCost.innerText = `$${totalCost.toFixed(0)} / tháng`;
+}
+
+if (cloudProvider && cloudService) {
+    cloudProvider.addEventListener('change', () => {
+        updateCloudDetails();
+        updateEstimator();
+    });
+
+    cloudService.addEventListener('change', updateCloudDetails);
+}
+
+[instanceCount, storageSize, bandwidth].forEach(range => {
+    if (range) {
+        range.addEventListener('input', updateEstimator);
+    }
+});
+
+if (deployButton) {
+    deployButton.addEventListener('click', () => {
+        const provider = cloudPricing[cloudProvider.value].name;
+        const service = cloudService.value.charAt(0).toUpperCase() + cloudService.value.slice(1);
+        deployMessage.innerText = `Đang mô phỏng triển khai ${service} trên ${provider}... Hoàn thành trong vài giây.`;
+        deployMessage.style.color = '#333';
+        deployButton.disabled = true;
+        deployButton.innerText = 'Đang triển khai...';
+
+        setTimeout(() => {
+            deployMessage.innerText = `Triển khai thành công! Bạn đã chọn ${service} trên ${provider} với chi phí khoảng ${estimatedCost.innerText}.`;
+            deployButton.disabled = false;
+            deployButton.innerText = 'Mô phỏng triển khai';
+        }, 1500);
+    });
+}
+
+updateCloudDetails();
+updateEstimator();
+
 // ==================== DARK MODE TOGGLE (Optional) ==================== //
 // Uncomment to enable dark mode feature
 /*

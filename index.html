@@ -15,6 +15,7 @@
                 <li><a href="#home">Trang chủ</a></li>
                 <li><a href="#about">Về tôi</a></li>
                 <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#cloud">Đám mây</a></li>
                 <li><a href="#projects">Dự án</a></li>
                 <li><a href="#contact">Liên hệ</a></li>
             </ul>
@@ -31,10 +32,11 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Xin chào, tôi là <span class="highlight">Tên của bạn</span></h1>
-                <p class="hero-subtitle">Web Developer | Designer | Lập trình viên</p>
-                <p class="hero-description">Tôi là một lập trình viên đam mê với niềm yêu thích xây dựng các ứng dụng web hiện đại và đẹp.</p>
+                <p class="hero-subtitle">Cloud Computing Enthusiast | Web Developer | Designer</p>
+                <p class="hero-description">Tôi xây dựng các giải pháp web hiện đại, tối ưu cho điện toán đám mây và phát triển ứng dụng có hiệu suất, khả năng mở rộng và tính sẵn sàng cao.</p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">Xem dự án của tôi</a>
+                    <a href="#cloud" class="btn btn-secondary">Khám phá đám mây</a>
                     <a href="#contact" class="btn btn-secondary">Liên hệ với tôi</a>
                 </div>
             </div>
@@ -93,12 +95,120 @@
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3>Tools & Others</h3>
+                    <h3>Cloud & DevOps</h3>
                     <ul>
-                        <li>Git & GitHub</li>
-                        <li>VS Code</li>
-                        <li>Figma</li>
-                        <li>Firebase</li>
+                        <li>AWS / Azure / GCP</li>
+                        <li>Docker & Kubernetes</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Serverless & Microservices</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cloud Computing Section -->
+    <section id="cloud" class="cloud">
+        <div class="container">
+            <h2 class="section-title">Giải pháp điện toán đám mây</h2>
+            <div class="cloud-content">
+                <div class="cloud-card">
+                    <h3>Đám mây hiệu suất cao</h3>
+                    <p>Thiết kế kiến trúc đám mây với mô hình IaaS, PaaS và SaaS để tối ưu chi phí, mở rộng dễ dàng và độ sẵn sàng cao.</p>
+                    <ul>
+                        <li>Triển khai container và serverless</li>
+                        <li>Quản lý dữ liệu với cloud storage</li>
+                        <li>Tích hợp CI/CD và giám sát</li>
+                        <li>Kiến trúc microservices và cân bằng tải</li>
+                        <li>Bảo mật dữ liệu và phục hồi thảm họa</li>
+                    </ul>
+                    <div class="cloud-highlights">
+                        <span>High Availability</span>
+                        <span>Auto Scaling</span>
+                        <span>Multi-region</span>
+                        <span>Monitoring</span>
+                    </div>
+                </div>
+                <div class="cloud-card interactive-cloud">
+                    <div class="cloud-selector">
+                        <label for="cloudProvider">Chọn nhà cung cấp:</label>
+                        <select id="cloudProvider">
+                            <option value="aws">AWS</option>
+                            <option value="azure">Azure</option>
+                            <option value="gcp">GCP</option>
+                        </select>
+                    </div>
+                    <div class="cloud-selector">
+                        <label for="cloudService">Chọn dịch vụ:</label>
+                        <select id="cloudService">
+                            <option value="compute">Compute</option>
+                            <option value="storage">Storage</option>
+                            <option value="database">Database</option>
+                        </select>
+                    </div>
+                    <div class="cloud-details">
+                        <h4 id="cloudFeatureTitle">AWS Compute</h4>
+                        <p id="cloudFeatureDescription">Tạo và quản lý máy chủ ảo, triển khai ứng dụng với khả năng mở rộng động và cân bằng tải tự động.</p>
+                    </div>
+                    <div class="cloud-estimator">
+                        <h4>Ước tính chi phí</h4>
+                        <div class="estimator-row">
+                            <label for="instanceCount">Số instance:</label>
+                            <input type="range" id="instanceCount" min="1" max="10" value="3">
+                            <span id="instanceValue">3</span>
+                        </div>
+                        <div class="estimator-row">
+                            <label for="storageSize">Dung lượng lưu trữ (GB):</label>
+                            <input type="range" id="storageSize" min="10" max="500" value="100">
+                            <span id="storageValue">100 GB</span>
+                        </div>
+                        <div class="estimator-row">
+                            <label for="bandwidth">Băng thông (TB):</label>
+                            <input type="range" id="bandwidth" min="1" max="10" value="2">
+                            <span id="bandwidthValue">2 TB</span>
+                        </div>
+                        <div class="price-summary">
+                            <span>Chi phí dự kiến:</span>
+                            <strong id="estimatedCost">$120 / tháng</strong>
+                        </div>
+                    </div>
+                    <button id="deployButton" class="btn btn-primary">Mô phỏng triển khai</button>
+                    <p id="deployMessage" class="deploy-message">Nhấn&nbsp;“Mô phỏng triển khai” để xem quy trình triển khai đám mây.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CI/CD Section -->
+    <section id="cicd" class="cicd">
+        <div class="container">
+            <h2 class="section-title">CI/CD & DevOps</h2>
+            <div class="cicd-grid">
+                <div class="cicd-card">
+                    <h3>Continuous Integration</h3>
+                    <p>Tự động kiểm tra, build và triển khai mã nguồn mỗi khi có thay đổi. Đảm bảo mã sạch, test đầy đủ và sẵn sàng cho môi trường sản xuất.</p>
+                    <ul>
+                        <li>GitHub Actions / GitLab CI</li>
+                        <li>Build, lint và test tự động</li>
+                        <li>Kiểm tra bảo mật và dependency</li>
+                    </ul>
+                </div>
+                <div class="cicd-card">
+                    <h3>Continuous Delivery</h3>
+                    <p>Chuỗi triển khai liên tục cho phép phát hành nhanh chóng và ổn định lên môi trường staging hoặc production.</p>
+                    <ul>
+                        <li>Triển khai tự động lên cloud</li>
+                        <li>Rollback nhanh khi gặp sự cố</li>
+                        <li>Quản lý phiên bản và release</li>
+                    </ul>
+                </div>
+                <div class="cicd-card">
+                    <h3>Monitoring & Feedback</h3>
+                    <p>Giám sát ứng dụng và nhận phản hồi sau deploy để cải thiện hiệu suất, độ tin cậy và user experience.</p>
+                    <ul>
+                        <li>Logs, metrics, alert</li>
+                        <li>Integration với Sentry / Prometheus</li>
+                        <li>Phân tích hiệu suất ứng dụng</li>
                     </ul>
                 </div>
             </div>
@@ -166,6 +276,25 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Project 4">
+                    </div>
+                    <div class="project-info">
+                        <h3>Dự án 4 - Cloud Deployment Dashboard</h3>
+                        <p>Dashboard mô phỏng triển khai ứng dụng lên đám mây với tính toán chi phí và lựa chọn dịch vụ AWS/Azure/GCP.</p>
+                        <div class="project-tags">
+                            <span>Cloud</span>
+                            <span>UI</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#cloud" class="link-btn">Xem tính năng</a>
+                            <a href="#" class="link-btn">GitHub</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -179,13 +308,13 @@
                 
                 <form class="contact-form" id="contactForm">
                     <div class="form-group">
-                        <input type="text" placeholder="Tên của bạn" required>
+                        <input type="text" name="name" placeholder="Tên của bạn" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email của bạn" required>
+                        <input type="email" name="email" placeholder="Email của bạn" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Tin nhắn của bạn" rows="5" required></textarea>
+                        <textarea name="message" placeholder="Tin nhắn của bạn" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
                 </form>
