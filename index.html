@@ -211,6 +211,16 @@
                         <li>Phân tích hiệu suất ứng dụng</li>
                     </ul>
                 </div>
+                <div class="cicd-card cicd-simulator">
+                    <h3>Pipeline Simulator</h3>
+                    <p>Chạy thử quy trình CI/CD giả lập để thấy rõ các bước build, test và deploy.</p>
+                    <button id="pipelineStart" class="btn btn-primary">Bắt đầu pipeline</button>
+                    <div class="pipeline-progress" id="pipelineProgress">
+                        <div class="pipeline-bar" id="pipelineBar"></div>
+                    </div>
+                    <div class="pipeline-status" id="pipelineStatus">Chưa bắt đầu</div>
+                    <div class="pipeline-log" id="pipelineLog"></div>
+                </div>
             </div>
         </div>
     </section>

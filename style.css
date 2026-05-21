@@ -357,6 +357,44 @@ body {
     font-weight: 700;
 }
 
+.cicd-simulator button {
+    margin-bottom: 1.5rem;
+}
+
+.pipeline-progress {
+    width: 100%;
+    height: 14px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.pipeline-bar {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+.pipeline-status {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.pipeline-log {
+    background: #f4f6ff;
+    padding: 1rem;
+    border-radius: 12px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    min-height: 120px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    border: 1px solid rgba(102, 126, 234, 0.18);
+}
+
 .cloud-card {
     background: var(--white);
     padding: 2rem;

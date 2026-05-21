@@ -250,6 +250,61 @@ if (deployButton) {
 
 updateCloudDetails();
 updateEstimator();
+// ==================== CI/CD PIPELINE SIMULATOR ====================
+const pipelineStart = document.getElementById('pipelineStart');
+const pipelineBar = document.getElementById('pipelineBar');
+const pipelineStatus = document.getElementById('pipelineStatus');
+const pipelineLog = document.getElementById('pipelineLog');
+
+const pipelineSteps = [
+    'Kiểm tra mã nguồn',
+    'Build ứng dụng',
+    'Chạy unit test',
+    'Kiểm tra bảo mật',
+    'Triển khai lên staging',
+    'Triển khai lên production'
+];
+
+function appendLog(message) {
+    if (!pipelineLog) return;
+    pipelineLog.innerText += `\n${new Date().toLocaleTimeString()} - ${message}`;
+    pipelineLog.scrollTop = pipelineLog.scrollHeight;
+}
+
+function runPipeline() {
+    if (!pipelineBar || !pipelineStatus || !pipelineLog || !pipelineStart) return;
+
+    pipelineBar.style.width = '0%';
+    pipelineStatus.innerText = 'Đang khởi chạy pipeline...';
+    pipelineLog.innerText = '';
+    pipelineStart.disabled = true;
+    pipelineStart.innerText = 'Đang chạy...';
+
+    let currentStep = 0;
+    appendLog('Pipeline bắt đầu.');
+
+    const stepInterval = setInterval(() => {
+        if (currentStep >= pipelineSteps.length) {
+            clearInterval(stepInterval);
+            pipelineBar.style.width = '100%';
+            pipelineStatus.innerText = 'Pipeline hoàn thành ✅';
+            appendLog('Pipeline đã chạy xong. Ứng dụng đã sẵn sàng.');
+            pipelineStart.disabled = false;
+            pipelineStart.innerText = 'Chạy lại pipeline';
+            return;
+        }
+
+        const progress = Math.round(((currentStep + 1) / pipelineSteps.length) * 100);
+        pipelineBar.style.width = `${progress}%`;
+        pipelineStatus.innerText = `Đang thực hiện: ${pipelineSteps[currentStep]}`;
+        appendLog(`Bước ${currentStep + 1}/${pipelineSteps.length}: ${pipelineSteps[currentStep]} hoàn thành.`);
+        currentStep += 1;
+    }, 1200);
+}
+
+if (pipelineStart) {
+    pipelineStart.addEventListener('click', runPipeline);
+}
 
 // ==================== DARK MODE TOGGLE (Optional) ==================== //
 // Uncomment to enable dark mode feature
